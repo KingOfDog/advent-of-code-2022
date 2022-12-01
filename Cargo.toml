@@ -1,0 +1,15 @@
+[package]
+name = "advent_of_code_2022"
+version = "0.1.0"
+authors = ["KingOfDog <github@bone.kingofdog.de>"]
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+aoc-runner="0.3.0"
+aoc-runner-derive="0.3.0"
+regex = "1.4.2"
+lazy_static = "1.4.0"
+ndarray = "0.15.4"
+itertools = "0.10.5"
