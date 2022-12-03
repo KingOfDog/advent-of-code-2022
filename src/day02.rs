@@ -1,5 +1,4 @@
 use aoc_runner_derive::{aoc, aoc_generator};
-use itertools::Itertools;
 use std::{
     cmp::{Ordering, PartialOrd},
     str::FromStr,
