@@ -27,7 +27,7 @@ fn parse_input(input: &str) -> Parsed {
         .parse::<usize>()
         .unwrap();
     let mut stacks: Vec<Stack> = vec![LinkedList::new(); stack_count];
-    lines.iter().rev().for_each(|line| {
+    lines.iter().for_each(|line| {
         line.chars()
             .chunks(4)
             .into_iter()
@@ -61,14 +61,14 @@ fn part1(input: &Parsed) -> String {
 
     input.1.iter().for_each(|op| {
         for _ in 0..op.count {
-            let item = stacks[op.from].pop_back().unwrap();
-            stacks[op.to].push_back(item);
+            let item = stacks[op.from].pop_front().unwrap();
+            stacks[op.to].push_front(item);
         }
     });
 
     stacks
         .iter()
-        .map(|stack| stack.back().unwrap())
+        .map(|stack| stack.front().unwrap())
         .collect::<String>()
 }
 
@@ -77,14 +77,20 @@ fn part2(input: &Parsed) -> String {
     let mut stacks = input.0.to_owned();
 
     input.1.iter().for_each(|op| {
-        let index = stacks[op.from].len() - op.count;
-        let mut split_off = stacks[op.from].split_off(index);
-        stacks[op.to].append(&mut split_off);
+        let mut items = LinkedList::new();
+
+        for _ in 0..op.count {
+            items.push_front(stacks[op.from].pop_front().unwrap());
+        }
+
+        while let Some(item) = items.pop_front() {
+            stacks[op.to].push_front(item);
+        }
     });
 
     stacks
         .iter()
-        .map(|stack| stack.back().unwrap())
+        .map(|stack| stack.front().unwrap())
         .collect::<String>()
 }
 
