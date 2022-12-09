@@ -2,6 +2,7 @@ use std::slice::Iter;
 
 use aoc_runner_derive::{aoc, aoc_generator};
 use itertools::Itertools;
+use rayon::prelude::*;
 
 struct Parsed(Vec<Vec<u8>>);
 
@@ -39,13 +40,12 @@ impl Parsed {
 
     fn num_visible(&self) -> usize {
         self.0
-            .iter()
+            .par_iter()
             .enumerate()
             .flat_map(|(y, row)| {
-                row.iter()
+                row.par_iter()
                     .enumerate()
                     .filter(move |(x, _)| self.visible(*x, y))
-                    .collect_vec()
             })
             .count()
     }
@@ -138,13 +138,12 @@ fn part1(input: &Parsed) -> usize {
 fn part2(input: &Parsed) -> usize {
     input
         .0
-        .iter()
+        .par_iter()
         .enumerate()
         .flat_map(|(y, row)| {
-            row.iter()
+            row.par_iter()
                 .enumerate()
-                .map(|(x, _)| input.scenic_score(x, y))
-                .collect_vec()
+                .map(move |(x, _)| input.scenic_score(x, y))
         })
         .max()
         .unwrap()
