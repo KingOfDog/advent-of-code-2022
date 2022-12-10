@@ -29,3 +29,4 @@ Advent of Code 2022 solutions written in [Rust](https://www.rust-lang.org/) :cra
 | [Day 7: No Space Left On Device](https://adventofcode.com/2022/day/7) | [day07.rs](src/day07.rs) |   ✓   |   **1743217** |   ✓   |   **8319096** |
 | [Day 8: Treetop Tree House](https://adventofcode.com/2022/day/8)      | [day08.rs](src/day08.rs) |   ✓   |      **1843** |   ✓   |    **180000** |
 | [Day 9: Rope Bridge](https://adventofcode.com/2022/day/9)             | [day09.rs](src/day09.rs) |   ✓   |      **5710** |   ✓   |      **2259** |
+| [Day 10: Cathode-Ray Tube](https://adventofcode.com/2022/day/10)      | [day10.rs](src/day10.rs) |   ✓   |     **14720** |   ✓   |  **FZBPBFZF** |
