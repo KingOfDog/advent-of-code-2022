@@ -32,3 +32,4 @@ Advent of Code 2022 solutions written in [Rust](https://www.rust-lang.org/) :cra
 | [Day 10: Cathode-Ray Tube](https://adventofcode.com/2022/day/10)        | [day10.rs](src/day10.rs) |   ✓   |     **14720** |   ✓   |    **FZBPBFZF** |
 | [Day 11: Monkey in the Middle](https://adventofcode.com/2022/day/11)    | [day11.rs](src/day11.rs) |   ✓   |     **55458** |   ✓   | **14508081294** |
 | [Day 12: Hill Climbing Algorithm](https://adventofcode.com/2022/day/12) | [day12.rs](src/day12.rs) |   ✓   |       **361** |   ✓   |         **354** |
+| [Day 13: Distress Signal](https://adventofcode.com/2022/day/13)         | [day13.rs](src/day13.rs) |   ✓   |      **5760** |   ✓   |       **26670** |
