@@ -33,3 +33,4 @@ Advent of Code 2022 solutions written in [Rust](https://www.rust-lang.org/) :cra
 | [Day 11: Monkey in the Middle](https://adventofcode.com/2022/day/11)    | [day11.rs](src/day11.rs) |   ✓   |     **55458** |   ✓   | **14508081294** |
 | [Day 12: Hill Climbing Algorithm](https://adventofcode.com/2022/day/12) | [day12.rs](src/day12.rs) |   ✓   |       **361** |   ✓   |         **354** |
 | [Day 13: Distress Signal](https://adventofcode.com/2022/day/13)         | [day13.rs](src/day13.rs) |   ✓   |      **5760** |   ✓   |       **26670** |
+| [Day 14: Relogith Reservoir](https://adventofcode.com/2022/day/14)      | [day14.rs](src/day14.rs) |   ✓   |       **715** |   ✓   |       **25248** |
