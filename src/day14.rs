@@ -14,8 +14,10 @@ struct Line {
 }
 
 #[derive(Debug, Copy, Clone)]
-struct Tile {
-    is_air: bool,
+enum Tile {
+    Air,
+    Rock,
+    Sand,
 }
 
 #[aoc_generator(day14)]
@@ -56,28 +58,28 @@ fn build_tiles(
 ) -> Vec<Vec<Tile>> {
     let width = bounds_x.1 - bounds_x.0 + 1;
     let height = bounds_y.1 + 1;
-    let mut grid = vec![vec![Tile { is_air: true }; width]; height];
+    let mut grid = vec![vec![Tile::Air; width]; height];
 
     lines.iter().for_each(|line| {
         if line.from.0 < line.to.0 {
             let y = line.from.1;
             for x in line.from.0..=line.to.0 {
-                grid[y][x - bounds_x.0].is_air = false;
+                grid[y][x - bounds_x.0] = Tile::Rock
             }
         } else if line.from.0 > line.to.0 {
             let y = line.from.1;
             for x in line.to.0..=line.from.0 {
-                grid[y][x - bounds_x.0].is_air = false;
+                grid[y][x - bounds_x.0] = Tile::Rock
             }
         } else if line.from.1 < line.to.1 {
             let x = line.from.0;
             for y in line.from.1..=line.to.1 {
-                grid[y][x - bounds_x.0].is_air = false;
+                grid[y][x - bounds_x.0] = Tile::Rock
             }
         } else if line.to.1 < line.from.1 {
             let x = line.from.0;
             for y in line.to.1..=line.from.1 {
-                grid[y][x - bounds_x.0].is_air = false;
+                grid[y][x - bounds_x.0] = Tile::Rock
             }
         }
     });
@@ -87,12 +89,10 @@ fn build_tiles(
 
 fn print_grid(grid: &Vec<Vec<Tile>>) {
     grid.iter().for_each(|row| {
-        row.iter().for_each(|cell| {
-            if cell.is_air {
-                print!(".")
-            } else {
-                print!("#")
-            }
+        row.iter().for_each(|cell| match cell {
+            Tile::Air => print!(" "),
+            Tile::Rock => print!("#"),
+            Tile::Sand => print!("O"),
         });
         println!("");
     });
@@ -104,16 +104,16 @@ fn find_next_sand_spot(grid: &Vec<Vec<Tile>>, x: usize) -> Option<(usize, usize)
     let width = grid[0].len() as i32;
     let height = grid.len() as i32;
     while x >= 0 && x < width && y < height {
-        if y + 1 >= height || grid[y as usize + 1][x as usize].is_air {
+        if y + 1 >= height || matches!(grid[y as usize + 1][x as usize], Tile::Air) {
             y += 1;
             continue;
         }
-        if x - 1 < 0 || grid[y as usize + 1][x as usize - 1].is_air {
+        if x - 1 < 0 || matches!(grid[y as usize + 1][x as usize - 1], Tile::Air) {
             x -= 1;
             y += 1;
             continue;
         }
-        if x + 1 >= width || grid[y as usize + 1][x as usize + 1].is_air {
+        if x + 1 >= width || matches!(grid[y as usize + 1][x as usize + 1], Tile::Air) {
             x += 1;
             y += 1;
             continue;
@@ -131,22 +131,22 @@ fn build_tiles_b(lines: &Parsed) -> HashMap<Point, Tile> {
         if line.from.0 < line.to.0 {
             let y = line.from.1;
             for x in line.from.0..=line.to.0 {
-                grid.insert((x, y), Tile { is_air: false });
+                grid.insert((x, y), Tile::Rock);
             }
         } else if line.from.0 > line.to.0 {
             let y = line.from.1;
             for x in line.to.0..=line.from.0 {
-                grid.insert((x, y), Tile { is_air: false });
+                grid.insert((x, y), Tile::Rock);
             }
         } else if line.from.1 < line.to.1 {
             let x = line.from.0;
             for y in line.from.1..=line.to.1 {
-                grid.insert((x, y), Tile { is_air: false });
+                grid.insert((x, y), Tile::Rock);
             }
         } else if line.to.1 < line.from.1 {
             let x = line.from.0;
             for y in line.to.1..=line.from.1 {
-                grid.insert((x, y), Tile { is_air: false });
+                grid.insert((x, y), Tile::Rock);
             }
         }
     });
@@ -162,9 +162,13 @@ fn print_grid_b(grid: &HashMap<Point, Tile>) {
     for y in 0..=max_y {
         for x in min_x..=max_x {
             if let Some(tile) = grid.get(&(x, y)) {
-                print!("#");
+                match tile {
+                    Tile::Air => print!(" "),
+                    Tile::Rock => print!("#"),
+                    Tile::Sand => print!("O"),
+                }
             } else {
-                print!(".");
+                print!(" ");
             }
         }
         println!("");
@@ -175,7 +179,6 @@ fn print_grid_b(grid: &HashMap<Point, Tile>) {
 fn find_next_sand_spot_b(grid: &HashMap<Point, Tile>, x: usize, height: usize) -> (usize, usize) {
     let mut x = x;
     let mut y = 0;
-    // let width = grid[0].len() as i32;
     loop {
         if !grid.contains_key(&(x, y + 1)) && y + 1 < height {
             y += 1;
@@ -199,18 +202,18 @@ fn find_next_sand_spot_b(grid: &HashMap<Point, Tile>, x: usize, height: usize) -
 fn part1(input: &Parsed) -> usize {
     let bounds_x = bounds_x(input);
     let bounds_y = bounds_y(input);
-    // println!("{:?}", bounds_x);
     let mut grid = build_tiles(input, bounds_x, bounds_y);
 
-    // print_grid(&grid);
+    print_grid(&grid);
 
     let mut count = 0;
     while let Some(pos) = find_next_sand_spot(&grid, 500 - bounds_x.0) {
-        grid[pos.1][pos.0].is_air = false;
+        grid[pos.1][pos.0] = Tile::Sand;
         count += 1;
-
-        // print_grid(&grid);
     }
+
+    println!("");
+    print_grid(&grid);
 
     count
 }
@@ -222,18 +225,19 @@ fn part2(input: &Parsed) -> usize {
 
     let height = bounds_y.1 + 2;
 
-    // print_grid_b(&grid);
+    print_grid_b(&grid);
 
     let mut count = 0;
     loop {
         let pos = find_next_sand_spot_b(&grid, 500, height);
         if pos == (500, 0) {
+            println!("");
+            print_grid_b(&grid);
             return count + 1;
         }
 
-        grid.insert(pos, Tile { is_air: false });
+        grid.insert(pos, Tile::Sand);
         count += 1;
-        // print_grid_b(&grid);
     }
 }
 
