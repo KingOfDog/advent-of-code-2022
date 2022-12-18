@@ -35,3 +35,4 @@ Advent of Code 2022 solutions written in [Rust](https://www.rust-lang.org/) :cra
 | [Day 13: Distress Signal](https://adventofcode.com/2022/day/13)         | [day13.rs](src/day13.rs) |   ✓   |      **5760** |   ✓   |          **26670** |
 | [Day 14: Relogith Reservoir](https://adventofcode.com/2022/day/14)      | [day14.rs](src/day14.rs) |   ✓   |       **715** |   ✓   |          **25248** |
 | [Day 15: Beacon Exclusion Zone](https://adventofcode.com/2022/day/15)   | [day15.rs](src/day15.rs) |   ✓   |   **4985193** |   ✓   | **11583882601918** |
+| [Day 16: Proboscidea Volcanium](https://adventofcode.com/2022/day/16)   | [day16.rs](src/day16.rs) |   ✓   |      **2183** |   ✓   |           **2911** |
