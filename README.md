@@ -38,3 +38,4 @@ Advent of Code 2022 solutions written in [Rust](https://www.rust-lang.org/) :cra
 | [Day 16: Proboscidea Volcanium](https://adventofcode.com/2022/day/16)   | [day16.rs](src/day16.rs) |   ✓   |      **2183** |   ✓   |           **2911** |
 | [Day 17: Pyroclastic Flow](https://adventofcode.com/2022/day/17)        | [day17.rs](src/day17.rs) |   ✓   |      **3209** |   ✓   |  **1580758017509** |
 | [Day 18: Boiling Boulders](https://adventofcode.com/2022/day/18)        | [day18.rs](src/day18.rs) |   ✓   |      **4604** |   ✓   |           **2604** |
+| [Day 19: Not Enough Minerals](https://adventofcode.com/2022/day/19)     | [day19.rs](src/day19.rs) |   ✓   |      **1266** |   ✓   |           **5800** |
