@@ -41,3 +41,4 @@ Advent of Code 2022 solutions written in [Rust](https://www.rust-lang.org/) :cra
 | [Day 19: Not Enough Minerals](https://adventofcode.com/2022/day/19)      | [day19.rs](src/day19.rs) |   ✓   |           **1266** |   ✓   |           **5800** |
 | [Day 20: Grove Positioning System](https://adventofcode.com/2022/day/20) | [day20.rs](src/day20.rs) |   ✓   |           **2827** |   ✓   |  **7834270093909** |
 | [Day 21: Monkey Math](https://adventofcode.com/2022/day/21)              | [day21.rs](src/day21.rs) |   ✓   | **22382838633806** |   ✓   |  **3099532691300** |
+| [Day 22: Monkey Map](https://adventofcode.com/2022/day/22)               | [day22.rs](src/day22.rs) |   ✓   |         **196134** |   ✓   |         **146011** |
