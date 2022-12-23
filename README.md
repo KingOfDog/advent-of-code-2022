@@ -42,3 +42,4 @@ Advent of Code 2022 solutions written in [Rust](https://www.rust-lang.org/) :cra
 | [Day 20: Grove Positioning System](https://adventofcode.com/2022/day/20) | [day20.rs](src/day20.rs) |   ✓   |           **2827** |   ✓   |  **7834270093909** |
 | [Day 21: Monkey Math](https://adventofcode.com/2022/day/21)              | [day21.rs](src/day21.rs) |   ✓   | **22382838633806** |   ✓   |  **3099532691300** |
 | [Day 22: Monkey Map](https://adventofcode.com/2022/day/22)               | [day22.rs](src/day22.rs) |   ✓   |         **196134** |   ✓   |         **146011** |
+| [Day 23: Unstable Diffusion](https://adventofcode.com/2022/day/23)       | [day23.rs](src/day23.rs) |   ✓   |           **4091** |   ✓   |           **1036** |
