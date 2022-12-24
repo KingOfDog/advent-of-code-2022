@@ -1,7 +1,4 @@
-use std::{
-    collections::{HashMap, HashSet, VecDeque},
-    vec::IntoIter,
-};
+use std::collections::{HashMap, VecDeque};
 
 use aoc_runner_derive::{aoc, aoc_generator};
 use itertools::Itertools;
@@ -120,7 +117,7 @@ fn part1(input: &Parsed) -> usize {
     empty_tiles
 }
 
-fn print_field(field: &Parsed) {
+fn _print_field(field: &Parsed) {
     let min_x = field.keys().min_by_key(|k| k.0).unwrap().0;
     let max_x = field.keys().max_by_key(|k| k.0).unwrap().0;
     let min_y = field.keys().min_by_key(|k| k.1).unwrap().1;
